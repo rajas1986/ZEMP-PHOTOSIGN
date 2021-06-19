@@ -1,0 +1,67 @@
+<div class="col-sm">
+        <mat-card>
+                <span *ngIf="empPhotoSet==false">
+                <img src = "{{'data:image/png;base64,' + empPhotoString}}" width="200" height="200" style="margin-right:25px;">
+                </span>
+                <span *ngIf="empPhotoSet">
+                <img [src]="imagePhotoSrc || '/assets/images/default-profile-pic.jpg'" alt="Employee Photo" width="200" height="200" style="margin-right:25px;">
+                
+                <input type="file"  name="fileUpload" class=" fileUpload" placeholder="Placeholder" 
+                [formControl]='fileUploadControl'
+                accept="image/*"
+                #fileUpload
+                (change)="obtainPhotoFileName($event.target.files)"
+                >
+                <button 
+                mat-raised-button
+                type="button"
+                class="btn btn-primary"
+                (click)="uploadPhoto($event)"
+                >Upload</button>
+                
+                </span>
+            </mat-card>
+</div>
+<!-- <div class="col-sm testing-file-upload">
+        <mat-card>
+                <form [formGroup]="myForm" (ngSubmit)="submit()">
+                        
+                <div class="form-group">
+                        <label for="file" style="margin-bottom:20px;">Employee Photo</label>
+                        <input 
+                                formControlName="file"
+                                id="file" 
+                                type="file" 
+                                class="form-control"
+                                placeholder="Photo"
+                                (change)="onFileChange($event)">
+                </div>
+                <div style="margin-top:10px;">
+                        <button class="btn btn-primary" type="submit">Upload</button>
+                </div>
+                </form>
+        </mat-card>
+</div> -->
+<div class="col-sm" style="margin-top: 20px;">
+        <mat-card>
+                <span *ngIf="empSignatureSet==false">
+                <img src = "{{'data:image/png;base64,' + empSignatureString}}" width="200" height="200" style="margin-right:25px;">
+                </span>
+                <span *ngIf="empSignatureSet">
+                <img [src]="imageSignatureSrc || '/assets/images/default-signature.png'" alt="Employee Signature" width="270" height="200"  style="margin-right:25px;">
+                <!-- <form [formGroup]="signatureUploadForm" class=""> -->
+                    <input type="file"  name="signatureUpload" class=" signatureUpload" placeholder="Placeholder" 
+                                [formControl]='signatureUploadControl'
+                                accept="image/*"
+                                #signatureUpload
+                                (change)="obtainSignatureFileName($event.target.files)"
+                                >
+                    <button 
+                        mat-raised-button
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="uploadSignature($event)">Upload</button>
+                <!-- </form> -->
+                </span>
+        </mat-card>
+</div>
